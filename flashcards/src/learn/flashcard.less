@@ -1,0 +1,77 @@
+/* The flash card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flash itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flash-card {
+  margin: auto;
+  margin-bottom: 25px;
+  width: 80vw;
+  height: 90vh;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  border-radius: 25px;
+
+  /* This container is needed to position the front and back side */
+  .flash-card-inner {
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 25px;
+
+    /* Position the front and back side */
+    .flash-card-front, .flash-card-back {
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+      border-radius: 25px;
+    }
+
+    /* Style the back side */
+    .flash-card-back {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &.-answer {
+    .flash-card-inner {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.simple-flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: ~"calc(100% - 20px)";
+  padding: 10px;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: 100px;
+      margin: 5px 0;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin: 5px 0;
+    }
+  }
+
+  img {
+    object-fit: contain;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 0;
+    max-height: 100%;
+  }
+}

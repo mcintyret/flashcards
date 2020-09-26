@@ -1,0 +1,45 @@
+{
+  "name": "flashcards",
+  "version": "0.0.1",
+  "description": "Flashcards",
+  "main": "webpack.config.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build": "NODE_ENV=production npm-run-all clean pack",
+    "clean": "rm -rf build",
+    "compile": "tsc -p .",
+    "lint": "./node_modules/tslint/bin/tslint --project .",
+    "watch": "npm-run-all compile -p watch:typescript hot:run",
+    "watch:typescript": "tsc -w -p .",
+    "hot:run": "webpack-dev-server --hot --inline --port=8200",
+    "pack": "webpack"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "file-loader": "^1.1.11",
+    "lodash-es": "4.17.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/lodash-es": "^4.14.80",
+    "@types/react": "16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/webpack": "^3.0.12",
+    "@types/webpack-dev-server": "^2.9.1",
+    "awesome-typescript-loader": "^3.3.0",
+    "css-loader": "^0.28.7",
+    "less": "^2.7.1",
+    "less-loader": "^4.0.5",
+    "npm": "5.4.2",
+    "npm-run-all": "4.1.1",
+    "style-loader": "^0.18.2",
+    "tslint": "^5.15.0",
+    "typescript": "3.7.5",
+    "uglifyjs-webpack-plugin": "1.0.0-beta.3",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
+}

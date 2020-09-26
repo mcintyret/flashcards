@@ -9,9 +9,23 @@ export interface IFlashcardProps {
 export const Flashcard2: React.FC<IFlashcardProps> = props => {
     const [showAnswer, setShowAnswer] = React.useState(false);
 
-    const onClick = () => setShowAnswer(!showAnswer);
+    const toggle = () => setShowAnswer(!showAnswer);
+
+    const spaceKeyListener = (evt: KeyboardEvent) => {
+        if (evt.code === "Space") {
+            toggle();
+        }
+    }
+
+    React.useEffect(() => {
+        window.addEventListener("keydown", spaceKeyListener);
+        return () => {
+            window.removeEventListener("keydown", spaceKeyListener);
+        }
+    });
+
     return (
-        <div className={classNames("flash-card", { "-answer": showAnswer })} onClick={onClick}>
+        <div className={classNames("flash-card", { "-answer": showAnswer })} onClick={toggle}>
             <div className="flash-card-inner">
                 <div className="flash-card-front">
                     {props.questionFace}

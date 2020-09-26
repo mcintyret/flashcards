@@ -13,9 +13,9 @@ export const FlashcardDeck: React.FC<IFlashcardDeckProps> = ({ flashcards }) => 
     const moveRight = () => setIndex(Math.min(index + 1, flashcards.length - 1));
 
     const arrowKeyListener = (evt: KeyboardEvent) => {
-        if (evt.key === "ArrowLeft") {
+        if (evt.code === "ArrowLeft") {
             moveLeft();
-        } else if (evt.key === "ArrowRight") {
+        } else if (evt.code === "ArrowRight") {
             moveRight();
         }
     }
@@ -35,7 +35,7 @@ export const FlashcardDeck: React.FC<IFlashcardDeckProps> = ({ flashcards }) => 
     );
 
     return (
-        <div className="flashcard-deck" onKeyDown={arrowKeyListener}>
+        <div className="flashcard-deck">
             {leftButton}
             <Flashcard2 {...flashcards[index]}/>
             {rightButton}
